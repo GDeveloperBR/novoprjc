@@ -278,13 +278,20 @@ public class Main {
                                         {
                                             if (!logged.msgReceived.get(i).read)
                                             {
+                                                int auxxxx;
                                                 System.out.print("New message ->" + logged.msgReceived.get(i).getSender() + ".\n");
                                                 System.out.print("\n" + logged.msgReceived.get(i).getBody() + "\n");
                                                 logged.msgReceived.get(i).read = true;
                                                 System.out.print("[1] - Answer;\n[2] - Mark as read\n");
                                                 input.nextLine();
-                                                int auxxxx = input.nextInt();
-
+                                                try{
+                                                    auxxxx = input.nextInt();
+                                                }
+                                                catch(InputMismatchException e){
+                                                    System.out.print(">>> Voce deve digitar um numero!!! <<<");
+                                                    auxxxx = input.nextInt();
+                                                }
+                                                
                                                 if (auxxxx == 1)
                                                 {
                                                     System.out.print("\nMessage:\n");
