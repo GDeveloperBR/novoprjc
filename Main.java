@@ -13,7 +13,17 @@ public class Main {
             while(aux2 != 2)
             {
                 System.out.println("-->> What do you want to do? <<--\n[1] - SignUp\n[2] - LogIn\n[99] - Exit");
-                aux1 = input.nextInt();
+                try{
+                    aux1 = input.nextInt();
+                }
+                catch(InputMismatchException e){
+                    System.out.print("\n>>>Voce deve digitar um numero! <<<\n");
+                }
+                finally{
+                    aux1 = input.nextInt();
+                }
+        
+                
                 if(aux1 == 99)
                 {
                     System.out.print("\n\n ->>> Bye bye, have a nice day! <<<- \n\n\n");
@@ -70,7 +80,15 @@ public class Main {
                         Account newAccount = new Account(name, password, username);
                         iface.add(newAccount);
                         System.out.print("\nAccount created. Press [1] to LogIn: ");
-                        aux2 = input.nextInt();
+                        try{
+                            aux2 = input.nextInt();
+                        }
+                        catch(InputMismatchException e){
+                            System.out.print(">>> Voce deve digitar um numero!!! <<<");
+                            aux2 = input.nextInt();
+                        }
+                        
+                        //aux2 = input.nextInt();
                         aux1 = 1;
                     case 2:
                         //System.out.print("Linha 52");
@@ -455,8 +473,9 @@ public class Main {
                                                         open.membersName.add(member.getName());
                                                         System.out.print("\nMember added\n\n");
                                                     }
-                                                    if(cmtHost == 2)
+                                                    if(cmtHost == 2)                                                
                                                     {
+                                                        int accept;
                                                         if(open.joinRqt.isEmpty())
                                                         {
                                                             System.out.print("\nRequest box empty\n");
@@ -468,7 +487,16 @@ public class Main {
                                                                 System.out.print(open.joinRqt.get(i));
                                                                 System.out.print(" want to enter your community?\n");
                                                                 System.out.print("[1] - Accept\n[2] - Reject\n");
-                                                                int accept = input.nextInt();
+                                                                try{
+                                                                    accept = input.nextInt();
+                                                                }
+                                                                catch(InputMismatchException e){
+                                                                    System.out.print("\nVocê deve digitar um número! <<<\n");
+                                                                }
+                                                                finally{
+                                                                    accept = input.nextInt();
+                                                                }
+                                                                
                                                                 if(accept == 1)
                                                                 {
                                                                     int member_index = iface.nickNames.indexOf(open.joinRqt.get(i));
